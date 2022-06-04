@@ -34,6 +34,10 @@
 |[old.py](old.py)|過去に用いていた関数などの置き場|
 |[test.py](test.py)|プログラムの実行結果の可視化など|
 |[view_commands.py](view_commands.py)|過去に実行したプログラムのパラメータを一覧表示|
+|[cython_wl_kernel.cpp](cython_wl_kernel.cpp)|Cythonによって自動生成されたWLカーネルのC++プログラム|
+|[cython_wl_kernel.pyx](cython_wl_kernel.pyx)|WLカーネルのCython実装|
+|[wl_kernel.cpp](wl_kernel.cpp)|WLカーネルのC++実装|
+|[wl_kernel.hpp](wl_kernel.hpp)|[wl_kernel.cpp](wl_kernel.cpp)に対応するヘッダファイル|
 
 # 実行例
 `python3 nasbowl2.py srcc -T 1500 --trials 10 --k_size_max 400 --eval_freq 10 --name sample`
