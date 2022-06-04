@@ -1,0 +1,1 @@
+nohup python auto_submit.py > log/auto_submit_out.txt &

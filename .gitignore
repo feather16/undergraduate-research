@@ -1,0 +1,14 @@
+/__pycache__/
+/.vscode/
+/build/
+/data/NATS-sss-v1_0-50262-simple/
+/data/NATS-tss-v1_0-3ffb9-simple/
+data/NATS-tss-v1_0-3ffb9-simple.tar
+/venv/
+backup.sh
+*.so
+*.zip
+slack_bot.py
+start_slack_bot
+tmp.png
+update
