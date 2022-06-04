@@ -41,3 +41,6 @@
 
 # 実行例
 `python3 nasbowl2.py srcc -T 1500 --trials 10 --k_size_max 400 --eval_freq 10 --name sample`
+
+<img src="image/proposed-bagging.png" width=400>
+<img src="image/proposed-similarity.png" width=400>
