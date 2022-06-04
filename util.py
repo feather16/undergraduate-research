@@ -18,8 +18,8 @@ from nats_bench.api_utils import ArchResults
 from cython_wl_kernel import cython_wl_kernel_ as wl_kernel
 
 import sys
-sys.path.append('/home/rio-hada')
-import workspace.util.debug as my
+#sys.path.append('/home/rio-hada')
+#import workspace.util.debug as my
 
 DATASET = 'ImageNet' # とりあえず定数
 

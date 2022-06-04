@@ -11,3 +11,15 @@
 - CentOS 7.7-1908
 - Python 3.6.8
 - GCC 4.8.5
+
+# 必要なモジュール
+- Cython
+- numpy 
+- matplotlib
+- yaml
+- requests
+- nats_bench
+- tqdm
+
+# 実行例
+`python3 nasbowl2.py srcc -T 1500 --trials 10 --k_size_max 400 --eval_freq 10 --name sample`

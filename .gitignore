@@ -5,6 +5,7 @@
 /data/NATS-tss-v1_0-3ffb9-simple/
 data/NATS-tss-v1_0-3ffb9-simple.tar
 /venv/
+/venv_old/
 backup.sh
 *.so
 *.zip
