@@ -1,7 +1,7 @@
 # UndergraduateResearch
 卒業研究の実験のために書いたソースコードです。<br>
 全てのコードを1から書きました。<br>
-(自動生成されるプログラムである[cython_wl_kernel.cpp](cython_wl_kernel.cpp)を除く)
+(自動生成されるコードである[cython_wl_kernel.cpp](cython_wl_kernel.cpp)を除く)
 
 論文[Neural Architecture Search using Bayesian Optimisation with Weisfeiler-Lehman Kernel](https://arxiv.org/abs/2006.07556v1)をベースとしています。
 
@@ -20,6 +20,20 @@
 - requests
 - nats_bench
 - tqdm
+
+# ソースコードの説明
+|ファイル名|内容|
+|-|-|
+|[auto_submit.py](auto_submit.py)|SLURMを対象としてジョブを自動で投入する|
+|[kernel_time.py](kernel_time.py)|WLカーネルの実行時間テスト用|
+|[nasbowl2.py](nasbowl2.py)|メインプログラム|
+|[slack_bot.py](slack_bot.py)|Webhookを用いてSlackにプログラムの実行状況を自動送信する(WebhookのURLは非公開)|
+|[util.py](util.py)|共通で用いるクラスや関数|
+|[cython_setup.py](cython_setup.py)|Cythonコードをコンパイルする|
+|[make_kernel_cache.py](make_kernel_cache.py)|WLカーネルの値をキャッシュとしてファイルに保存する|
+|[old.py](old.py)|過去に用いていた関数などの置き場|
+|[test.py](test.py)|プログラムの実行結果の可視化など|
+|[view_commands.py](view_commands.py)|過去に実行したプログラムのパラメータを一覧表示|
 
 # 実行例
 `python3 nasbowl2.py srcc -T 1500 --trials 10 --k_size_max 400 --eval_freq 10 --name sample`

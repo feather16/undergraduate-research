@@ -9,7 +9,6 @@ data/NATS-tss-v1_0-3ffb9-simple.tar
 backup.sh
 *.so
 *.zip
-slack_bot.py
-start_slack_bot
+WEBHOOK_URL
 tmp.png
 update
