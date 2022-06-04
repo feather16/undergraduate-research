@@ -1,5 +1,5 @@
 # UndergraduateResearch
-卒業研究の時に書いたソースコードです。<br>
+卒業研究の実験のために書いたソースコードです。<br>
 全てのコードを1から書きました。<br>
 (自動生成されるプログラムである[cython_wl_kernel.cpp](cython_wl_kernel.cpp)を除く)
 
