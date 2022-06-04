@@ -29,7 +29,7 @@
 |[nasbowl2.py](nasbowl2.py)|メインプログラム|
 |[slack_bot.py](slack_bot.py)|Webhookを用いてSlackにプログラムの実行状況を自動送信する(WebhookのURLは非公開)|
 |[util.py](util.py)|共通で用いるクラスや関数|
-|[cython_setup.py](cython_setup.py)|Cythonコードをコンパイルする|
+|[cython_setup.py](cython_setup.py)|[Cython実装のWLカーネル](cython_wl_kernel.pyx)と[C++実装のWLカーネル](wl_kernel.cpp)をPython向けにコンパイルする|
 |[make_kernel_cache.py](make_kernel_cache.py)|WLカーネルの値をキャッシュとしてファイルに保存する|
 |[old.py](old.py)|過去に用いていた関数などの置き場|
 |[test.py](test.py)|プログラムの実行結果の可視化など|
