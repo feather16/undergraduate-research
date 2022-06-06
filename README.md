@@ -33,7 +33,7 @@
 |[make_kernel_cache.py](make_kernel_cache.py)|WLカーネルの値をキャッシュとしてファイルに保存する|
 |[old.py](old.py)|過去に用いていた関数などの置き場|
 |[test.py](test.py)|プログラムの実行結果の可視化など|
-|[view_commands.py](view_commands.py)|過去に実行したプログラムのパラメータを一覧表示|
+|[view_commands.py](view_commands.py)|過去に実行したプログラムの入力コマンドを一覧表示|
 |[cython_wl_kernel.cpp](cython_wl_kernel.cpp)|Cythonによって自動生成されたWLカーネルのC++プログラム|
 |[cython_wl_kernel.pyx](cython_wl_kernel.pyx)|WLカーネルのCython実装|
 |[wl_kernel.cpp](wl_kernel.cpp)|WLカーネルのC++実装|
