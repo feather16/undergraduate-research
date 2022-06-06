@@ -6,9 +6,11 @@ from libcpp.vector cimport vector
 cdef extern from "wl_kernel.hpp":
     cdef int wl_kernel_c_(vector[int] cell1, vector[int] cell2, int H)
 
+# C++で書かれたWLカーネルをCython経由で呼び出す
 def cython_wl_kernel_(list cell1, list cell2, int H = 2) -> float:
     return float(wl_kernel_c_(cell1, cell2, H))
 
+# Cythonで書かれたWLカーネル
 def cython_wl_kernel_written_in_cython(list cell1, list cell2, int H = 2) -> float:
     cdef:
         vector[vector[int]] NEXT_NODES = [

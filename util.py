@@ -126,6 +126,7 @@ class NATSBenchWrapper:
     def __init__(self):
         self.cells: List[Cell] = []
             
+    # アーカイブファイルからアーキテクチャの精度などを読み込む(低速)
     def load_from_archive(self, data_path: str) -> None:
         nats_bench: NATStopology = create(data_path, search_space='topology', fast_mode=True, verbose=False)
         self.num_archs: int = len(nats_bench)
@@ -145,6 +146,7 @@ class NATSBenchWrapper:
             cell = Cell(arch_str, accuracy_dict, flops_dict, i)
             self.cells.append(cell)
             
+    # csvファイルからアーキテクチャの精度などを読み込む(高速)
     def load_from_csv(self, csv_path: str) -> None:
         with open(csv_path) as f:
             reader = csv.DictReader(f)
@@ -161,6 +163,7 @@ class NATSBenchWrapper:
                 i += 1
         self.num_archs: int = len(self.cells)
     
+    # アーキテクチャの精度をcsvファイルに保存
     def save_to_csv(self, csv_path: str) -> None:
         with open(csv_path, mode='w') as f:
             writer = csv.writer(f)
@@ -195,7 +198,7 @@ dropping_out_time: float = 0
 K_inv_cache: np.ndarray = np.array([]) #
 K_inv_cache_count: int = 0
 
-'''
+''' 関数呼び出しのオーバーヘッドが大きいので未使用
 def wl_kernel(cell1: Cell, cell2: Cell, H: int = 2) -> float:
     global wl_kernel_cache
     key = (cell1.index, cell2.index) if cell1.index < cell2.index else (cell2.index, cell1.index)
@@ -205,13 +208,14 @@ def wl_kernel(cell1: Cell, cell2: Cell, H: int = 2) -> float:
     return result
 '''
 
+# 平均と分散を推定
 # mu = k.T * K^-1 * y
 # sigma^2 = kernel(x, x) - k.T * K_inv * k
 def acquisition_gp_with_wl_kernel(
         x: Cell, 
         data: List[Cell], 
-        K_inv: np.ndarray, 
-        K_inv_y: np.ndarray,
+        K_inv: np.ndarray, # K^-1
+        K_inv_y: np.ndarray, # K^-1 * y
         mean_acc: float
         #coeff: float
     ) -> Tuple[float, float]:
@@ -344,6 +348,9 @@ def compose_K_inv(K: np.ndarray, t: int, B: int, is_dropped: bool, recalc_freq: 
     matrix_inv_time += time.time() - start_t
     return K_inv
 
+# Kよりも一回り小さい行列の逆行列を利用して、Kの逆行列を計算
+# 計算誤差が大きいので不採用
+# 参考: https://ja.wikipedia.org/wiki/区分行列
 def reuse_inverse(K: np.ndarray, K_inv_cache: np.ndarray, t: int, B: int) -> np.ndarray:
     K_t_1_inv: np.ndarray = K_inv_cache
     L: np.ndarray = K[:t - B, t - B:]
@@ -494,7 +501,8 @@ def search(
         for index in trained_indices:
             data.append(search_space[index])
             
-            # 類似性に基づいて行列サイズを抑える場合
+            # 提案手法のうちの1つ
+            # 類似性に基づいて行列サイズを抑え、過学習を抑制
             
             SIM_REVERSE = False # 類似度の低いものを取り除く場合
             SIM_DONT_CARE = False # ランダムに取り除く場合

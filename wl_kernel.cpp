@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// #C++で書かれたWLカーネル
 int wl_kernel_c_(const std::vector<int>& cell1, const std::vector<int>& cell2, const int H){
     const vector<vector<int>> NEXT_NODES = {
         {1, 2, 4},

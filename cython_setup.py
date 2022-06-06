@@ -3,11 +3,14 @@
 # https://qiita.com/en3/items/1f1a609c4d7c8f3066a7
 # https://qiita.com/taroc/items/fc854340a5e498ceb07d
 
+# CythonをPythonから呼び出せるようにコンパイルする
+
 from distutils import sysconfig
 from distutils.core import setup, Extension
 from Cython.Build import cythonize
 from numpy import get_include # cimport numpy を使うため
 
+# GCCのパスを設定
 sysconfig.get_config_vars()['CC'] = '/usr/bin/gcc -pthread -std=c++11'
 
 ext = Extension(

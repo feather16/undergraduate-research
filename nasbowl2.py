@@ -65,6 +65,7 @@ hparam = HyperParam(
 
 objective: str = args.objective
 
+# アーキテクチャの精度を計測
 def acc_task():
     results: Dict[str, np.ndarray] = {}
     stat_results: Dict[str, List[np.ndarray]] = {}
@@ -101,6 +102,7 @@ def acc_task():
         results_arr[key] = arr.tolist()
     print('result:', results_arr)
 
+# スピアマンの順位相関係数を計測
 def srcc_task():
     results_srcc: numpy.ndarray = numpy.zeros((T // eval_freq,))
     results_acc: numpy.ndarray = numpy.zeros((T // eval_freq,))
@@ -121,6 +123,7 @@ def srcc_task():
 
     print('result:', {'srcc': results_srcc.tolist(), 'acc': results_acc.tolist()})
 
+# 実行時間を計測
 def time_task():
     result: Dict[str, np.ndarray] = time_compare(wrapper, hparam)
 

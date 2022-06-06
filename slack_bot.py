@@ -10,6 +10,7 @@ import yaml
 WEBHOOK_URL = open(f'{os.path.dirname(__file__)}/WEBHOOK_URL').read()
 USER_NAME = 'rio-hada'
 
+# jobidのコマンドを取得
 def get_command(jobid: int) -> str:
     cmd = 'Unknown'
     try:
@@ -19,6 +20,7 @@ def get_command(jobid: int) -> str:
         pass
     return cmd
 
+# 標準エラーが出力されるファイルにエラーが含まれるかチェック
 def check_error(jobid: int) -> str:
     error = 'Unknown'
     try:
@@ -32,11 +34,13 @@ def check_error(jobid: int) -> str:
         pass
     return error
 
+# squeue noticeをSlackに送信すべき時間かどうか
 def is_squeue_notice_time() -> bool:
     tmp = int(time.time() % (24 * 3600))
     notice_hours = [0, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
     return tmp % 3600 == 0 and ((tmp // 3600) + 9) % 24 in notice_hours
         
+# squeueの内容をSlackにポストする
 def send_squeue_message() -> None:
     squeue_out = subprocess.check_output('squeue').decode()
     text = f'```{squeue_out}```'
@@ -48,6 +52,7 @@ def send_squeue_message() -> None:
         'username': username
     }))
 
+# jobの内容をSlackにポストする
 def send_job_message(jobid: int, t: int) -> None:
     time_format: str = ''
     cmd = 'Unknown'

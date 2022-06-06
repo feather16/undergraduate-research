@@ -3,7 +3,7 @@ import time
 
 USER_NAME = 'rio-hada'
 
-MAX_USE = 4
+MAX_USE = 4 # ノードを最大で何個使用するか
 
 JOBS = '''
 ls
@@ -29,7 +29,7 @@ while True:
         print(f'Can\'t parse \'line\'')
         continue
     
-    if count < MAX_USE:
+    if count < MAX_USE: # 空いているノードが十分にあれば
         job = job_list.pop(0)
         subprocess.call(job.split())
         print(f'Remaining {len(job_list)} jobs.')
