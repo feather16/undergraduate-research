@@ -1,7 +1,0 @@
-runningHost: c2
-startDate: Mon Jun 20 18:42:58 JST 2022
-runningHosts: c2
-numOfNodes: 1
-numOfTasks: 1
-currentWorkingDirectory: /home/rio-hada/workspace/UndergraduateResearch
-command: sbatch run nasbowl2.py acc -T 1500 --trials 1 --eval_length 1 --k_size_max 800
