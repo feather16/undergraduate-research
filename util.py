@@ -647,7 +647,7 @@ def accuracy_compare(wrapper: NATSBenchWrapper, hparam: HyperParam) -> Dict[str,
         
         # 以下は、上位hparam.eval_length番目のアーキテクチャの精度を記録する場合のコード
         if len(r) >= hparam.eval_length:
-            gpwl_results.append(r[hparam.eval_length])
+            gpwl_results.append(r[hparam.eval_length - 1])
         else:
             gpwl_results.append(0)
         

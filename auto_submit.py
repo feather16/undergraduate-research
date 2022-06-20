@@ -3,10 +3,13 @@ import time
 
 USER_NAME = 'rio-hada'
 
-MAX_USE = 4 # ノードを最大で何個使用するか
+MAX_USE = 8 # ノードを最大で何個使用するか
 
 JOBS = '''
-ls
+sbatch run nasbowl2.py acc -T 1500 --trials 100 --eval_length 1 --name base
+sbatch run nasbowl2.py acc -T 1500 --trials 100 --eval_length 1 --k_size_max 800
+sbatch run nasbowl2.py acc -T 1500 --trials 100 --eval_length 1 --name base
+sbatch run nasbowl2.py acc -T 1500 --trials 100 --eval_length 1 --k_size_max 800
 '''
 
 
