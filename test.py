@@ -151,6 +151,7 @@ def plot_srcc(id_to_label: dict, n: int):
     plt.ylim(bottom=0.62, top=0.835)
     plt.savefig('result/image/tmp.png')
 
+'''
 plot_srcc({
     8621: '既存手法',
     8622: 'バギング',
@@ -158,6 +159,7 @@ plot_srcc({
     8629: '類似度の低いものを削除', 
     8630: 'ランダムに削除'
 }, 8)
+'''
     
 def plot_srcc_old():
     id_to_label_random = {
@@ -326,3 +328,10 @@ def plot_time_one_old():
     plt.legend()
 
     plt.savefig('tmp.png')
+
+method1 = yaml.safe_load(open('result/log/out_8626.yaml'))['result']['Total']
+method2 = yaml.safe_load(open('result/log/out_8627.yaml'))['result']['Total']
+#print(len(method1), len(method2), method1[-1], method2[-1])
+for iter in [75, 150, 300, 600, 1500, 3000]:
+    index = (iter + 1) // 2 - 1
+    print('%4d %f %f' % (iter, method1[index], method2[index]))
