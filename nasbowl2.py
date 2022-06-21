@@ -97,7 +97,7 @@ def acc_task():
     plt.legend()
     plt.savefig(save_path)
 
-    results_arr = {}
+    results_arr: Dict[List[float]] = {}
     for key, arr in results.items():
         results_arr[key] = arr.tolist()
     print('result:', results_arr)
