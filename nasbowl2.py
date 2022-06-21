@@ -85,10 +85,9 @@ def acc_task():
         results[key] /= trials
 
     # stat_test とりあえずコメントアウト
-    #for key, value in results.items():
-    #    print(key)
-    #    print(np.mean(stat_results[key], 0).tolist())
-    #    print(np.std(stat_results[key], 0).tolist())
+    for key, value in results.items():
+        print(f'{key}_mean:', np.mean(stat_results[key], 0).tolist())
+        print(f'{key}_std:', np.std(stat_results[key], 0).tolist())
         
     plt.xlabel('T')
     plt.ylabel('accuracy (%) (avg of top10)')
