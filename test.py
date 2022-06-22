@@ -5,6 +5,9 @@ from matplotlib import pyplot as plt
 from collections import Counter
 from util import *
 import yaml
+from nats_bench import create
+from nats_bench.api_topology import NATStopology
+from nats_bench.api_utils import ArchResults
 plt.rcParams['font.family'] = 'WenQuanYi Micro Hei'
 
 def dataset_accuracy_distribution():
@@ -329,9 +332,24 @@ def plot_time_one_old():
 
     plt.savefig('tmp.png')
 
+'''
 method1 = yaml.safe_load(open('result/log/out_8626.yaml'))['result']['Total']
 method2 = yaml.safe_load(open('result/log/out_8627.yaml'))['result']['Total']
 #print(len(method1), len(method2), method1[-1], method2[-1])
 for iter in [75, 150, 300, 600, 1500, 3000]:
     index = (iter + 1) // 2 - 1
     print('%4d %f %f' % (iter, method1[index], method2[index]))
+'''
+
+def train_time(data_path: str, epochs: int) -> None:
+    nats_bench: NATStopology = create(data_path, search_space='topology', fast_mode=True, verbose=False)
+    num_archs: int = len(nats_bench)
+    
+    values = []
+    for i in tqdm(range(num_archs)):
+        dic: dict = nats_bench.get_more_info(i, 'ImageNet16-120', hp=str(epochs), is_random=False)
+        values.append(dic['train-all-time'])
+    print(np.mean(values), np.std(values))
+    
+train_time('data/NATS-tss-v1_0-3ffb9-simple', 12)
+train_time('data/NATS-tss-v1_0-3ffb9-simple', 200)
