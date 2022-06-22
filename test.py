@@ -351,5 +351,5 @@ def train_time(data_path: str, epochs: int) -> None:
         values.append(dic['train-all-time'])
     print(np.mean(values), np.std(values))
     
-train_time('data/NATS-tss-v1_0-3ffb9-simple', 12)
-train_time('data/NATS-tss-v1_0-3ffb9-simple', 200)
+train_time('data/NATS-tss-v1_0-3ffb9-simple', 12) # 665.533473346006 171.7197671799525
+train_time('data/NATS-tss-v1_0-3ffb9-simple', 200) # 11092.224555766765 2861.9961196658755
