@@ -495,7 +495,7 @@ def search(
 
     for t in range(hparam.T):
         sample_indices: List[int] = random.sample(range(len(search_space)), hparam.P) # search_spaceのインデックス
-        trained_indices = sampler(search_space, sample_indices, data, hparam) # search_spaceのインデックス
+        trained_indices: List[int] = sampler(search_space, sample_indices, data, hparam) # search_spaceのインデックス
         
         # データに追加
         for index in trained_indices:
