@@ -7,6 +7,9 @@
 
 卒業論文は[こちら](https://drive.google.com/file/d/1C9roMHSPTDO5KhsnYaoSr7gMs4ZYpqzj/view)
 
+## 2022年9月23日追記
+改修したコードを[こちら](https://github.com/feather16/nasbowlb)で公開しています。
+
 # 実行環境
 - CentOS 7.7-1908
 - Python 3.6.8
